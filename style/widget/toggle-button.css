@@ -1,0 +1,17 @@
+button.toggle {
+    background: #303030;
+    min-width: 100px;
+    padding: 20px;
+}
+
+button.toggle:hover:checked {
+    background: #bb4050;
+}
+
+button.toggle:checked {
+    background: #922826;
+}
+button.toggle:checked label,
+button.toggle:checked image {
+    color: white;
+}
