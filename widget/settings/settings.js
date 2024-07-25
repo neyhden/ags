@@ -11,7 +11,6 @@ const SettingsToggle = Widget.Button({
     })
 })
 
-
 const SettingsWindow = () => Widget.Window({
     name: "settings",
     visible: false,

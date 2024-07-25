@@ -6,18 +6,19 @@ const Workspaces = () => Widget.EventBox({
     onScrollUp: () => dispatch('e-1'),
     onScrollDown: () => dispatch('e+1'),
     child: Widget.Box({
-        class_name: "bg round",
+        class_name: "margin-sides",
         children: Array.from({ length: 10 }, (_, i) => i + 1).map(i => Widget.Button({
-            attribute: i,
-            child: Widget.Label({
-                label: hyprland.active.workspace.bind("id").as(id => {
-                    if (i === id) return ''
-                    if (!hyprland.getWorkspace(i)) return ''
-                    if (!hyprland.getWorkspace(i)?.windows) return ''
-                    return ''
-                })
+            class_name: hyprland.active.workspace.bind("id").as(id => {
+                if (i === id) return "workspace-active"
+                if (!hyprland.getWorkspace(i)) return "workspace-empty"
+                if (!hyprland.getWorkspace(i)?.windows) return "workspace-empty"
+                return "workspace-idle"
             }),
+            attribute: i,
             onClicked: () => dispatch(i),
+            child: Widget.Box({
+                vpack: "center",
+            })
         })),
     }),
 })

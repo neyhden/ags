@@ -1,7 +1,6 @@
 import { Calendar } from "./widget/calendar.js"
 
 const InfoToggle = () => Widget.Button({
-    class_name: "bg round",
     child: Widget.Label().poll(1000, self => self.label = Utils.exec("date '+%H:%M'")),
     on_clicked: () => App.toggleWindow("info")
 })

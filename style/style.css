@@ -2,13 +2,13 @@
 @import url("./widget/scale.css");
 @import url("./widget/toggle-button.css");
 @import url("./widget/button.css");
+@import url("./widget/workspaces.css");
 
 * {
     background: none;
     color: white;
     font-family: FiaCodeNerdFontMono;
     font-size: 16px;
-    margin: 0px 5px;
     min-height: 0;
     min-width: 0;
 }
@@ -37,7 +37,6 @@ image {
 .bg {
     background: #101010;
     border: none;
-    padding: 0px 5px;
 }
 
 .cell {
@@ -56,4 +55,8 @@ image {
 }
 .cell-button label {
     font-size: 32px;
+}
+
+.margin-sides {
+    margin: 0 5px;
 }

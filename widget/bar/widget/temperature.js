@@ -5,7 +5,8 @@ let temperature = Variable("0", {
 })
 
 const Temperature = () => Widget.Label({
-        label: temperature.bind().as(v => `${v.slice(0, -3)} ºC`),
-    })
+    class_name: "margin-sides",
+    label: temperature.bind().as(v => `${v.slice(0, -3)} ºC`),
+})
 
 export { Temperature }

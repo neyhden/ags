@@ -1,0 +1,43 @@
+.workspace-active,
+.workspace-idle,
+.workspace-empty {
+    border-radius: 0;
+    padding: 0;
+    font-size: 0;
+}
+
+.workspace-active box,
+.workspace-idle box,
+.workspace-empty box {
+    margin: 0px 5px;
+    border-radius: 50%;
+    transition-duration: 0.2s;
+}
+
+.workspace-active:hover box,
+.workspace-idle:hover box,
+.workspace-empty:hover box {
+    background: #ffaaaa;
+}
+
+.workspace-empty box {
+    background: gray;
+    min-width: 7px;
+    min-height: 7px;
+}
+.workspace-empty box {
+    margin: 0px 2px;
+}
+
+.workspace-idle box {
+    background: white;
+    min-width: 9px;
+    min-height: 9px;
+}
+
+.workspace-active box {
+    background: #ff5555;
+    min-width: 20px;
+    min-height: 10px;
+    border-radius: 25%;
+}

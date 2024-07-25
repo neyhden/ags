@@ -6,6 +6,7 @@ import { SettingsToggle } from "../settings/settings.js"
 import { Temperature } from "./widget/temperature.js"
 import { ColorPicker } from "./widget/colorpicker.js"
 import { InfoToggle } from "../info/info.js"
+import { LauncherToggle } from "./widget/apps.js"
 
 const LeftBar = () => {
     return Widget.Box({
@@ -13,6 +14,7 @@ const LeftBar = () => {
         children: [
             Widget.Box({
                 children: [
+                    LauncherToggle(),
                     Workspaces(),
                 ]
             })
@@ -31,7 +33,6 @@ const CenterBar = () => {
 const RightBar = () => {
     return Widget.Box({
         hpack: "end",
-        class_name: "bg round",
         children: [
             ResetCSS(),
             ReloadCSS(),
@@ -47,9 +48,9 @@ const RightBar = () => {
 const Bar = () => Widget.Window({
     name: "bar",
     anchor: ["top", "left", "right"],
-    margins: [5, 0, 0, 0],
     exclusivity: "exclusive",
     layer: "bottom",
+    class_name: "bg",
     child: Widget.CenterBox({
         start_widget: LeftBar(),
         center_widget: CenterBar(),
