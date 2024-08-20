@@ -1,6 +1,7 @@
 import { InfoWindow } from "./widget/info/info.js"
 import { Bar } from "./widget/bar/bar.js"
 import { SettingsWindow } from "./widget/settings/settings.js"
+import { applauncher } from "./widget/applauncher/applauncher.js"
 
 
 App.config({
@@ -9,7 +10,8 @@ App.config({
     windows: [
         Bar(),
         SettingsWindow(),
-        InfoWindow()
+        InfoWindow(),
+        applauncher,
     ],
 })
 

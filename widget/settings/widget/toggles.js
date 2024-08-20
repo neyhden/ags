@@ -21,11 +21,20 @@ const BluetoothToggle = () => Widget.ToggleButton({
 
 const TouchpadToggle = () => Widget.ToggleButton({
     class_name: "cell toggle",
-    active: false,
+    active: true,
     on_toggled: ({ active }) => {
         Utils.exec(`hyprctl keyword "device[cust0001:00-04f3:30fa-touchpad]:enabled" "${active ? "true" : "false"}"`)
     },
     child: Widget.Label('')
+})
+
+const VpnToggle = () => Widget.ToggleButton({
+    class_name: "cell toggle",
+    active: network.vpn.activated_connections.length != 0,
+    on_toggled: ({ active }) => {
+        network.vpn.connections[0].setConnection(active)
+    },
+    child: Widget.Label('󰖂')
 })
 
 const Toggles = () => Widget.Box({
@@ -38,6 +47,12 @@ const Toggles = () => Widget.Box({
                 WifiToggle(),
                 BluetoothToggle(),
                 TouchpadToggle(),
+            ]
+        }),
+        Widget.Box({
+            hpack: "center",
+            children: [
+                VpnToggle()
             ]
         }),
     ]

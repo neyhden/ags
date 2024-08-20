@@ -14,10 +14,14 @@
     transition-duration: 0.2s;
 }
 
-.workspace-active:hover box,
 .workspace-idle:hover box,
 .workspace-empty:hover box {
     background: #ffaaaa;
+}
+.workspace-idle:hover box,
+.workspace-empty:hover box {
+    min-width: 13px;
+    border-radius: 25%;
 }
 
 .workspace-empty box {
