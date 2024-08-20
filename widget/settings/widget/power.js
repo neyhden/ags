@@ -1,5 +1,5 @@
 const Reboot = () => Widget.Button({
-    class_name: "round",
+    class_name: "round margin",
     child: Widget.Label({
         label: " Reboot"
     }),
@@ -7,7 +7,7 @@ const Reboot = () => Widget.Button({
 })
 
 const PowerOff = () => Widget.Button({
-    class_name: "round",
+    class_name: "round margin",
     child: Widget.Label({
         label: "⏻ Shut down"
     }),
@@ -25,7 +25,7 @@ const PowerBox = () => Widget.Box({
 
 let PowerRevealer = Widget.Revealer({
     reveal_child: false,
-    transition: "slide_right",
+    transition: "slide_left",
     child: PowerBox()
 })
 
@@ -36,10 +36,10 @@ const PowerToggler = () => Widget.Button({
 })
 
 const Power = () => Widget.Box({
-    hpack: "end",
+    hpack: "start",
     children: [
-        PowerRevealer,
         PowerToggler(),
+        PowerRevealer,
     ]
 })
 

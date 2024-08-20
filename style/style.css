@@ -60,3 +60,7 @@ image {
 .margin-sides {
     margin: 0 5px;
 }
+
+.margin {
+    margin: 5px 5px;
+}
