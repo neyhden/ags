@@ -23,4 +23,21 @@ const Workspaces = () => Widget.EventBox({
     }),
 })
 
-export { Workspaces }
+const ActiveWindow= () => Widget.Box({
+    children: [
+        Widget.Icon({
+            icon: hyprland.active.client.bind("class").as(i => {
+                if (Utils.lookUpIcon(i)) return i
+                let loweri = i.toLowerCase()
+                if (Utils.lookUpIcon(loweri)) return loweri
+                return ""
+            }),
+            size: 20
+        }),
+        Widget.Label({
+            label: hyprland.active.client.bind("title").as(t => t.slice(0, 40))
+        })
+    ]
+})
+
+export { Workspaces, ActiveWindow }

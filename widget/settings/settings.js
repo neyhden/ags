@@ -17,6 +17,7 @@ const SettingsWindow = () => Widget.Window({
     anchor: ["top", "right"],
     margins: [5, 5, 0, 0],
     exclusivity: "exclusive",
+    keymode: "exclusive",
     layer: "overlay",
     child: Widget.Box({
         vertical: true,
@@ -28,6 +29,7 @@ const SettingsWindow = () => Widget.Window({
             Toggles()
         ]
     }),
+    setup: self => self.keybind("Escape", () => App.closeWindow("settings")),
 })
 
 export { SettingsWindow, SettingsToggle }

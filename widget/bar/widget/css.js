@@ -1,7 +1,10 @@
 const ReloadCSS = () => Widget.Button({
     on_clicked: () => {
+        const scss = `${App.configDir}/style/style.scss`
+        const css = `${App.configDir}/style/style.css`
+        Utils.exec(`sassc ${scss} ${css}`)
         App.resetCss()
-        App.applyCss(`${App.configDir}/style/style.css`)
+        App.applyCss(css)
     },
     child: Widget.Label({
         label: "",

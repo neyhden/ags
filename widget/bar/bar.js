@@ -1,12 +1,13 @@
 import { Battery } from "./widget/battery.js"
 import { Network } from "./widget/network.js"
-import { ReloadCSS, ResetCSS } from "./widget/css.js"
-import { Workspaces } from "./widget/workspaces.js"
+import { ReloadCSS } from "./widget/css.js"
+import { ActiveWindow, Workspaces } from "./widget/hyprland.js"
 import { SettingsToggle } from "../settings/settings.js"
 import { Temperature } from "./widget/temperature.js"
 import { ColorPicker } from "./widget/colorpicker.js"
 import { InfoToggle } from "../info/info.js"
 import { LauncherToggle } from "./widget/apps.js"
+import { sysTray } from "./widget/systray.js"
 
 const LeftBar = () => {
     return Widget.Box({
@@ -16,6 +17,10 @@ const LeftBar = () => {
                 children: [
                     LauncherToggle(),
                     Workspaces(),
+                    Widget.Separator({ vertical: true }),
+                    sysTray,
+                    Widget.Separator({ vertical: true }),
+                    ActiveWindow(),
                 ]
             })
         ]
@@ -34,7 +39,6 @@ const RightBar = () => {
     return Widget.Box({
         hpack: "end",
         children: [
-            ResetCSS(),
             ReloadCSS(),
             Temperature(),
             Battery(),
