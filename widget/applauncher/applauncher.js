@@ -59,10 +59,19 @@ const Applauncher = (width = 1000, height = 600) => {
         },
 
         // filter out the list
-        on_change: ({ text }) => applications.forEach(item => {
-            let found = item.attribute.app.match(text ?? "")
-            item.visible = found
-        }),
+        on_change: ({ text }) => {
+            list.set_filter_func(child => {
+                // @ts-ignore
+                return child.child.attribute.app.match(text ?? "")
+            })
+            list.set_sort_func((child1, child2) => {
+                // @ts-ignore
+                let freq1 = child1.child.attribute.app.frequency
+                // @ts-ignore
+                let freq2 = child2.child.attribute.app.frequency
+                return freq1 > freq2 ? 0 : 1
+            })
+        }
     })
 
     return Widget.Box({

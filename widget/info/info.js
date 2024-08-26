@@ -19,13 +19,12 @@ const InfoWindow = () => Widget.Window({
     keymode: "exclusive",
     child: Widget.Box({
         vertical: true,
-        class_name: "bg round",
+        class_name: "infobox bg round",
         children: [
             TimeBox(),
             Widget.Separator({ vertical: false }),
             Widget.Box({
                 vertical: false,
-                class_name: "bg round",
                 children: [
                     Calendar(),
                     Widget.Separator({ vertical: true }),
