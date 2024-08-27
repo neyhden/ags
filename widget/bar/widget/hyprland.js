@@ -30,7 +30,7 @@ const ActiveWindow= () => Widget.Box({
                 if (Utils.lookUpIcon(i)) return i
                 let loweri = i.toLowerCase()
                 if (Utils.lookUpIcon(loweri)) return loweri
-                return ""
+                return "image-missing-symbolic"
             }),
             size: 20
         }),

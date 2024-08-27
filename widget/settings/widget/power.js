@@ -31,7 +31,10 @@ let PowerRevealer = Widget.Revealer({
 
 const PowerToggler = () => Widget.Button({
     class_name: "round cell-button",
-    child: Widget.Label("⏻"),
+    child: Widget.Icon({
+        icon: "system-shutdown-symbolic",
+        size: 42
+    }),
     on_clicked: () => PowerRevealer.reveal_child = !PowerRevealer.reveal_child
 })
 

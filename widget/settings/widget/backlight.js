@@ -18,7 +18,7 @@ const Value = () => Widget.Label({
 })
 
 const BacklightBox = () => Widget.Box({
-    class_name: "cell round",
+    class_name: "round",
     children: [
         Icon(),
         Slider(),

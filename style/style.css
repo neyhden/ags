@@ -6,14 +6,8 @@
   min-height: 0;
   min-width: 0; }
 
-.infobox {
+.popwindow {
   padding: 8px; }
-
-image {
-  border: none;
-  box-shadow: none;
-  outline: none;
-  -gtk-icon-shadow: none; }
 
 .round-right {
   border-top-right-radius: 10px;
@@ -60,6 +54,16 @@ image {
   font-size: 31px;
   color: gray; }
 
+image {
+  border: none;
+  box-shadow: none;
+  outline: none;
+  -gtk-icon-shadow: none; }
+
+entry {
+  padding: 20px;
+  font-size: 32px; }
+
 .player {
   padding: 10px;
   min-width: 350px; }
@@ -105,16 +109,21 @@ button {
     color: #ff5555; }
   button:active label, button:active image {
     color: #ff7e7e; }
+  button:focus {
+    background: #242424; }
   button.toggle {
-    background: #1a1a1a;
-    min-width: 100px;
+    background: #151515;
+    margin: 10px;
     padding: 20px; }
+    button.toggle:hover {
+      background: #242424; }
     button.toggle:checked {
       background: #ff5555; }
       button.toggle:checked:hover {
         background: #ff2222; }
-      button.toggle:checked label, button.toggle:checked image {
-        color: white; }
+    button.toggle label, button.toggle image {
+      font-size: 32px;
+      color: white; }
 
 calendar {
   border: none; }

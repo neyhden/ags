@@ -14,7 +14,7 @@ const AppItem = app => Widget.Button({
         tooltip_text: app.icon_name,
         children: [
             Widget.Icon({
-                icon: Utils.lookUpIcon(app.icon_name || "") ? app.icon_name || "" : "",
+                icon: Utils.lookUpIcon(app.icon_name ?? "") ? app.icon_name ?? "image-missing-symbolic" : "image-missing-symbolic",
                 size: 64,
             }),
             Widget.Label({
@@ -31,18 +31,12 @@ const Applauncher = (width = 1000, height = 600) => {
     // list of application buttons
     let applications = query("").map(AppItem)
 
-    // container holding the buttons
-    /*
-    const list = Widget.Box({
-        vertical: true,
-        children: applications,
-    })
-    */
     let list = Widget.FlowBox({
         min_children_per_line: 10,
         setup: self => {
             applications.forEach(app => self.add(app))
             self.show_all()
+            self.foreach(item => item.can_focus = false)
         }
     })
 
@@ -50,12 +44,10 @@ const Applauncher = (width = 1000, height = 600) => {
     const entry = Widget.Entry({
         hexpand: true,
         on_accept: () => {
-            // make sure we only consider visible (searched for) applications
-	        const results = applications.filter((item) => item.visible);
-            if (results[0]) {
-                App.toggleWindow(WINDOW_NAME)
-                results[0].attribute.app.launch()
-            }
+            if (!list.get_child_at_pos(0, 0)) return
+            App.toggleWindow(WINDOW_NAME)
+            // @ts-ignore
+            list.get_child_at_pos(0, 0)?.child.attribute.app.launch()
         },
 
         // filter out the list
@@ -76,7 +68,7 @@ const Applauncher = (width = 1000, height = 600) => {
 
     return Widget.Box({
         vertical: true,
-        class_name: "bg round",
+        class_name: "popwindow bg round",
         children: [
             entry,
 

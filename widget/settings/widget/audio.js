@@ -68,7 +68,7 @@ const MicBox = () => Widget.Box({
 
 const VolumeBox = () => Widget.Box({
     vertical: true,
-    class_name: "cell round",
+    class_name: "round",
     children: [
         SpeakerBox(),
         MicBox(),

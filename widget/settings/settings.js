@@ -6,9 +6,7 @@ import { Toggles } from "./widget/toggles.js"
 const SettingsToggle = Widget.Button({
     on_clicked: () => App.toggleWindow("settings"),
     class_name: "bg",
-    child: Widget.Label({
-        label: '⏼'
-    })
+    child: Widget.Icon("avatar-default-symbolic")
 })
 
 const SettingsWindow = () => Widget.Window({
@@ -21,11 +19,14 @@ const SettingsWindow = () => Widget.Window({
     layer: "overlay",
     child: Widget.Box({
         vertical: true,
-        class_name: "bg round",
+        class_name: "popwindow bg round",
         children: [
             Power(),
+            Widget.Separator({ vertical: false }),
             VolumeBox(),
+            Widget.Separator({ vertical: false }),
             BacklightBox(),
+            Widget.Separator({ vertical: false }),
             Toggles()
         ]
     }),
