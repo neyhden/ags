@@ -59,10 +59,15 @@ image {
   box-shadow: none;
   outline: none;
   -gtk-icon-shadow: none; }
+  image .image {
+    margin: 5px; }
 
 entry {
   padding: 20px;
   font-size: 32px; }
+
+flowbox button:focus {
+  background: #1a1a1a; }
 
 .player {
   padding: 10px;
@@ -109,8 +114,6 @@ button {
     color: #ff5555; }
   button:active label, button:active image {
     color: #ff7e7e; }
-  button:focus {
-    background: #242424; }
   button.toggle {
     background: #151515;
     margin: 10px;

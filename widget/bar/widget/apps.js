@@ -1,5 +1,5 @@
 const LauncherToggle = () => Widget.Button({
-    child: Widget.Icon('input-dialpad-symbolic'),
+    child: Widget.Icon('arch-symbolic'),
     on_clicked: () => App.toggleWindow("applauncher")
 })
 

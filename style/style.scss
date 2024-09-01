@@ -74,11 +74,21 @@ image {
     box-shadow: none;
     outline: none;
     -gtk-icon-shadow: none;
+
+    .image {
+        margin: 5px;
+    }
 }
 
 entry {
     padding: 20px;
     font-size: 32px;
+}
+
+flowbox {
+    button:focus {
+        background: lighten($color: $bg-color, $amount: 4);
+    }
 }
 
 .player {
@@ -152,9 +162,6 @@ button {
         label, image {
             color: lighten($color: $highlight, $amount: 8);
         }
-    }
-    &:focus {
-        background: lighten($color: $bg-color, $amount: 8);
     }
 
     &.toggle {

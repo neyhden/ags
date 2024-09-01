@@ -2,6 +2,7 @@ const mpris = await Service.import("mpris")
 
 import { Calendar } from "./widget/calendar.js"
 import { Media } from "./widget/mpris.js"
+import { Notifications } from "./widget/notifications.js"
 import { TimeBox } from "./widget/time.js"
 
 const InfoToggle = () => Widget.Button({
@@ -26,6 +27,8 @@ const InfoWindow = () => Widget.Window({
             Widget.Box({
                 vertical: false,
                 children: [
+                    Notifications(),
+                    Widget.Separator({ vertical: true }),
                     Calendar(),
                     Widget.Separator({ vertical: true }),
                     Media,

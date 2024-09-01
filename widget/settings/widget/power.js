@@ -25,7 +25,7 @@ const PowerBox = () => Widget.Box({
 
 let PowerRevealer = Widget.Revealer({
     reveal_child: false,
-    transition: "slide_left",
+    transition: "slide_down",
     child: PowerBox()
 })
 
@@ -40,6 +40,7 @@ const PowerToggler = () => Widget.Button({
 
 const Power = () => Widget.Box({
     hpack: "start",
+    vertical: true,
     children: [
         PowerToggler(),
         PowerRevealer,

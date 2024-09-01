@@ -1,4 +1,7 @@
+import { Stream } from "resource:///com/github/Aylur/ags/service/audio.js"
+
 const audio = await Service.import("audio")
+let apps = audio.bind("apps")
 
 const icons = {
     speaker: {
@@ -22,34 +25,34 @@ const getIcon = (/** @type {string} */ type, /** @type {boolean | null} */ muted
     return icons[type].high
 }
 
-const VolumeSlider = (type = 'speaker') => Widget.Slider({
+const VolumeSlider = (/** @type {Stream} */ stream) => Widget.Slider({
     hexpand: true,
     min: 0,
     max: 1,
     draw_value: false,
-    onChange: ({ value }) => audio[type].volume = value,
-    value: audio[type].bind('volume'),
+    onChange: ({ value }) => stream.volume = value,
+    value: stream.bind('volume'),
 })
 
-const VolumeButton = (/** @type { "speaker" | "microphone" } */type = "speaker") => Widget.Button({
-    on_clicked: () => audio[type].is_muted = !audio[type].is_muted,
-    child: Widget.Icon().hook(audio[type], self => {
-        self.icon = getIcon(type, audio[type].is_muted, audio[type].volume)
+const VolumeButton = (/** @type {Stream} */ stream, /** @type { "speaker" | "microphone" } */type) => Widget.Button({
+    on_clicked: () => stream.is_muted = !stream.is_muted,
+    child: Widget.Icon().hook(stream, self => {
+        self.icon = getIcon(type, stream.is_muted, stream.volume)
     })
 })
 
-const VolumeValue = (type = "speaker") => Widget.Label({
-    label: audio[type].bind("volume").as((/** @type {number} */ v) => `${(v*100).toFixed(0)}%`)
+const VolumeValue = (/** @type {Stream} */ stream) => Widget.Label({
+    label: stream.bind("volume").as((/** @type {number} */ v) => `${(v*100).toFixed(0)}%`)
 })
 
-const SpeakerSlider = () => VolumeSlider('speaker')
-const MicSlider = () => VolumeSlider('microphone')
+const SpeakerSlider = () => VolumeSlider(audio.speaker)
+const MicSlider = () => VolumeSlider(audio.microphone)
 
-const SpeakerButton = () => VolumeButton("speaker")
-const MicButton = () => VolumeButton("microphone")
+const SpeakerButton = () => VolumeButton(audio.speaker, "speaker")
+const MicButton = () => VolumeButton(audio.microphone, "microphone")
 
-const SpeakerValue = () => VolumeValue("speaker")
-const MicValue = () => VolumeValue("microphone")
+const SpeakerValue = () => VolumeValue(audio.speaker)
+const MicValue = () => VolumeValue(audio.microphone)
 
 const SpeakerBox = () => Widget.Box({
     children: [
@@ -66,12 +69,44 @@ const MicBox = () => Widget.Box({
     ]
 })
 
+const Apps = Widget.Box({
+    class_name: "cell round",
+    vertical: true,
+    children: apps.as(list => list.map(capp => Widget.Box({
+        vertical: true,
+        children: [
+            Widget.Label((capp.name ?? "?") + ": " + (capp.description?.slice(0, 20) ?? "?")),
+            Widget.Box({ children: [
+                VolumeButton(capp, "speaker"),
+                VolumeSlider(capp),
+                VolumeValue(capp),
+            ]})
+        ]
+    })))
+})
+
+let AppsRevealer = Widget.Revealer({
+    transition: "slide_down",
+    reveal_child: false,
+    child: Apps,
+})
+
+const AppsToggle = () => Widget.Button({
+    child: Widget.Icon('zoom-in'),
+    on_clicked: self => {
+        AppsRevealer.reveal_child = !AppsRevealer.reveal_child
+        self.child.icon = self.child.icon == 'zoom-in' ? 'zoom-out' : 'zoom-in'
+    }
+})
+
 const VolumeBox = () => Widget.Box({
     vertical: true,
     class_name: "round",
     children: [
         SpeakerBox(),
         MicBox(),
+        AppsToggle(),
+        AppsRevealer,
     ]
 })
 

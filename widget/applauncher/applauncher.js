@@ -40,6 +40,25 @@ const Applauncher = (width = 1000, height = 600) => {
         }
     })
 
+    const reload = Widget.Button({
+        on_clicked: () => {
+            entry.set_text("")
+            list.get_children().forEach(item => {
+                list.remove(item)
+                item.destroy()
+            })
+            applications = query("").map(AppItem)
+            applications.forEach(app => list.add(app))
+            list.show_all()
+            list.foreach(item => item.can_focus = false)
+        },
+        can_focus: false,
+        child: Widget.Icon({
+            icon: "view-refresh-symbolic",
+            size: 64,
+        })
+    })
+
     // search entry
     const entry = Widget.Entry({
         hexpand: true,
@@ -70,7 +89,10 @@ const Applauncher = (width = 1000, height = 600) => {
         vertical: true,
         class_name: "popwindow bg round",
         children: [
-            entry,
+            Widget.Box({ children: [
+                entry,
+                reload
+            ]}),
 
             // wrap the list in a scrollable
             Widget.Scrollable({
