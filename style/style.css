@@ -100,6 +100,18 @@ flowbox button:focus {
     .player button.play-pause {
       margin: 0 .3em; }
 
+.bat-high label, .bat-high image {
+  color: lightgreen; }
+
+.bat-med label, .bat-med image {
+  color: yellow; }
+
+.bat-low label, .bat-low image {
+  color: orange; }
+
+.bat-crit label, .bat-crit image {
+  color: red; }
+
 separator {
   margin: 8px 8px;
   padding: 1px;
@@ -191,3 +203,6 @@ scale {
   min-width: 20px;
   min-height: 10px;
   border-radius: 25%; }
+
+tooltip {
+  background: #101010; }

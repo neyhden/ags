@@ -141,6 +141,29 @@ flowbox {
     }
 }
 
+.bat{
+    &-high {
+        label, image {
+            color: lightgreen;
+        }
+    }
+    &-med {
+        label, image {
+            color: yellow;
+        }
+    }
+    &-low {
+        label, image {
+            color: orange;
+        }
+    }
+    &-crit {
+        label, image {
+            color: red;
+        }
+    }
+}
+
 separator {
     margin: 8px 8px;
     padding: 1px;
@@ -282,4 +305,8 @@ scale {
         min-height: 10px;
         border-radius: 25%;
     }
+}
+
+tooltip {
+    background: $bg-color;
 }

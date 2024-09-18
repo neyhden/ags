@@ -27,6 +27,7 @@ const SettingsWindow = () => Widget.Window({
             Widget.Separator({ vertical: false }),
             BacklightBox(),
             Widget.Separator({ vertical: false }),
+            // PowerProfiles(),
             Toggles()
         ]
     }),

@@ -1,4 +1,4 @@
-const { query } = await Service.import("applications")
+const app_service = await Service.import("applications")
 const WINDOW_NAME = "applauncher"
 
 /** @param {import('resource:///com/github/Aylur/ags/service/applications.js').Application} app */
@@ -29,7 +29,7 @@ const AppItem = app => Widget.Button({
 
 const Applauncher = (width = 1000, height = 600) => {
     // list of application buttons
-    let applications = query("").map(AppItem)
+    let applications = app_service.query("").map(AppItem)
 
     let list = Widget.FlowBox({
         min_children_per_line: 10,
@@ -47,7 +47,8 @@ const Applauncher = (width = 1000, height = 600) => {
                 list.remove(item)
                 item.destroy()
             })
-            applications = query("").map(AppItem)
+            app_service.reload()
+            applications = app_service.query("").map(AppItem)
             applications.forEach(app => list.add(app))
             list.show_all()
             list.foreach(item => item.can_focus = false)
