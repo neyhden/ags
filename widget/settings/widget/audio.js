@@ -42,6 +42,7 @@ const VolumeButton = (/** @type {Stream} */ stream, /** @type { "speaker" | "mic
 })
 
 const VolumeValue = (/** @type {Stream} */ stream) => Widget.Label({
+    class_name: "slider_label",
     label: stream.bind("volume").as((/** @type {number} */ v) => `${(v*100).toFixed(0)}%`)
 })
 

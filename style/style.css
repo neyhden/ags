@@ -6,6 +6,9 @@
   min-height: 0;
   min-width: 0; }
 
+.slider_label {
+  min-width: 50px; }
+
 .popwindow {
   padding: 8px; }
 

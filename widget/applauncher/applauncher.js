@@ -11,7 +11,7 @@ const AppItem = app => Widget.Button({
     child: Widget.Box({
         class_name: "",
         vertical: true,
-        tooltip_text: app.icon_name,
+        tooltip_text: app.icon_name + '\n' + app.executable + '\n' + app.desktop,
         children: [
             Widget.Icon({
                 icon: Utils.lookUpIcon(app.icon_name ?? "") ? app.icon_name ?? "image-missing-symbolic" : "image-missing-symbolic",

@@ -14,6 +14,7 @@ const Icon = () => Widget.Button({
 })
 
 const Value = () => Widget.Label({
+    class_name: "slider_label",
     label: backlight.bind("screen_value").as(v => `${(v*100).toFixed(0)}%`)
 })
 
